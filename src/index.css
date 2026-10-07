@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-dark: #080c14;
+    --bg-surface: #0f1524;
+    --sunflower-gold: #f5b731;
+    --sunflower-deep: #e09f19;
+    --rose-soft: #f4a5ae;
+    --rose-deep: #de6b7c;
+    --lavender-soft: #c4b5fd;
+    --lavender-deep: #8b5cf6;
+    --lily-white: #fdfbf7;
+    --cream-paper: #fbf7ee;
+    --text-warm: #f7f4ed;
+    --text-muted: #cbd5e1;
+  }
+
+  body {
+    background-color: var(--bg-dark);
+    color: var(--text-warm);
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+}
+
+/* Typography Helpers */
+.font-handwriting {
+  font-family: 'Caveat', cursive;
+}
+
+.font-editorial {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-script {
+  font-family: 'Sacramento', cursive;
+}
+
+/* Scrapbook Paper Texture & Card Shadows */
+.paper-card {
+  background-color: #faf6ee;
+  color: #2b2621;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.45), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.paper-card-dark {
+  background: linear-gradient(145deg, rgba(22, 28, 44, 0.9) 0%, rgba(13, 17, 28, 0.95) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+/* Scrapbook Tape simulation */
+.washi-tape {
+  position: absolute;
+  height: 24px;
+  width: 75px;
+  background-color: rgba(245, 235, 215, 0.7);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(2px);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.washi-tape-top {
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.washi-tape-left {
+  top: -8px;
+  left: 10px;
+  transform: rotate(-12deg);
+}
+
+.washi-tape-right {
+  top: -8px;
+  right: 10px;
+  transform: rotate(14deg);
+}
+
+/* Glow & Lighting Effects */
+.golden-glow {
+  box-shadow: 0 0 40px rgba(245, 183, 49, 0.25);
+}
+
+.moon-glow {
+  box-shadow: 0 0 60px 10px rgba(240, 245, 255, 0.18);
+}
+
+.eyes-iris-glow {
+  box-shadow: 0 0 50px 15px rgba(234, 179, 8, 0.35);
+}
+
+/* Organic Keyframe Animations */
+@keyframes fireflyFloat {
+  0%, 100% {
+    transform: translateY(0px) translateX(0px) scale(0.9);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-22px) translateX(12px) scale(1.1);
+    opacity: 0.95;
+  }
+}
+
+@keyframes gentleSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translateY(-20px) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(105vh) rotate(360deg) translateX(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes softPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.04);
+    opacity: 1;
+  }
+}
+
+.animate-firefly {
+  animation: fireflyFloat 6s ease-in-out infinite;
+}
+
+.animate-sway {
+  animation: gentleSway 5s ease-in-out infinite;
+  transform-origin: bottom center;
+}
+
+.animate-pulse-soft {
+  animation: softPulse 4s ease-in-out infinite;
+}
+
+/* Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #080c14;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(245, 183, 49, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(245, 183, 49, 0.4);
+}
